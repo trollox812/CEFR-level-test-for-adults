@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/submit-results",
+      "destination": "/api/submit-results.js"
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hunky Dory English Level Test for Adults</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <main class="test-shell">
+        <section id="landing-screen" class="screen active">
+          <div class="hero-layout">
+            <div class="hero-copy">
+              <div class="hero-brand">
+                <img
+                  src="./assets/hunky-dory-logo.jpg"
+                  alt="Hunky Dory Academy logo"
+                  class="hero-logo"
+                />
+              </div>
+              <p class="hero-breadcrumb">Hunky Dory English for adults</p>
+              <h1>Adult English level test</h1>
+              <button id="start-test-button" class="primary-button">
+                Start the test
+              </button>
+            </div>
+
+            <div class="hero-visual">
+              <div class="hero-stack">
+                <div class="hero-level hero-level-a0">A0</div>
+                <div class="hero-level hero-level-a1">A1</div>
+                <div class="hero-level hero-level-a2">A2</div>
+                <div class="hero-level hero-level-b1">B1</div>
+                <div class="hero-level hero-level-b2">B2</div>
+              </div>
+              <div class="hero-note">
+                <strong>12 questions</strong>
+                <span>before each level check</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="registration-screen" class="screen">
+          <div class="content-card wide-card registration-card">
+            <div class="step-pill">1</div>
+            <h2>Your details</h2>
+            <p class="lead-text">
+              Add your details before the test begins. This helps us recommend
+              the most suitable adult English course and follow up with you.
+            </p>
+
+            <form id="registration-form" class="details-form">
+              <label class="field-group">
+                <span class="field-label">Full name</span>
+                <input
+                  id="student-name"
+                  class="text-input"
+                  name="learnerName"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="Your full name"
+                />
+              </label>
+
+              <div class="field-grid">
+                <label class="field-group">
+                  <span class="field-label">Age</span>
+                  <input
+                    id="student-age"
+                    class="text-input"
+                    name="learnerAge"
+                    type="number"
+                    inputmode="numeric"
+                    min="18"
+                    placeholder="Enter age"
+                  />
+                </label>
+
+                <label class="field-group">
+                  <span class="field-label">Current situation</span>
+                  <input
+                    id="current-situation"
+                    class="text-input"
+                    name="currentSituation"
+                    type="text"
+                    list="current-situation-options"
+                    placeholder="Working, university, job seeking…"
+                    autocomplete="off"
+                  />
+                  <datalist id="current-situation-options"></datalist>
+                </label>
+              </div>
+
+              <label class="field-group">
+                <span class="field-label">Email address</span>
+                <input
+                  id="learner-email"
+                  class="text-input"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="name@example.com"
+                />
+              </label>
+
+              <p class="helper-text">
+                We use your email only for your result and course follow-up.
+              </p>
+              <p id="sheet-config-note" class="admin-note" hidden></p>
+              <p id="registration-message" class="form-message" hidden></p>
+
+              <button id="save-details-button" class="primary-button" type="submit">
+                Save and continue
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <section id="welcome-screen" class="screen">
+          <div class="content-card wide-card">
+            <div class="step-pill">2</div>
+            <h2>Welcome to the English level test!</h2>
+            <p class="lead-text">
+              This adult placement test checks practical grammar, vocabulary,
+              reading, and writing in a calm step-by-step way.
+            </p>
+            <ul class="instruction-list">
+              <li>Answer all the questions in each round.</li>
+              <li>If you do not know the answer, choose "I don't know."</li>
+              <li>Each round has 12 questions, then a short reading section.</li>
+              <li>After reading, the app decides whether you are ready for the next level.</li>
+              <li>At the end, there is a short writing task with feedback.</li>
+            </ul>
+            <button id="welcome-next-button" class="primary-button">
+              Let's start!
+            </button>
+          </div>
+        </section>
+
+        <section id="transition-screen" class="screen">
+          <div class="content-card wide-card">
+            <div id="transition-step" class="step-pill">3</div>
+            <h2 id="transition-title"></h2>
+            <p id="transition-text" class="transition-text"></p>
+            <button id="transition-continue-button" class="primary-button">
+              Continue
+            </button>
+          </div>
+        </section>
+
+        <section id="reading-screen" class="screen">
+          <div class="content-card wide-card reading-card">
+            <div class="step-pill">Reading</div>
+            <p id="reading-level-note" class="support-copy"></p>
+            <h2 id="reading-title">Reading</h2>
+            <p id="reading-instructions" class="lead-text"></p>
+
+            <div id="reading-passage" class="reading-passage"></div>
+            <div id="reading-question-list" class="reading-question-list"></div>
+            <p id="reading-message" class="form-message" hidden></p>
+
+            <button id="reading-submit-button" class="primary-button">
+              Submit reading answers
+            </button>
+          </div>
+        </section>
+
+        <section id="question-screen" class="screen">
+          <div class="question-shell">
+            <div class="question-meta-row">
+              <div>
+                <p id="level-kicker" class="question-kicker"></p>
+                <p id="question-progress" class="question-progress"></p>
+              </div>
+              <div id="round-chip" class="round-chip"></div>
+            </div>
+
+            <h2 id="question-prompt" class="question-heading"></h2>
+
+            <div id="choice-list" class="choice-list" role="list"></div>
+
+            <button id="question-ok-button" class="primary-button" hidden>
+              OK
+            </button>
+          </div>
+        </section>
+
+        <section id="writing-screen" class="screen">
+          <div class="content-card wide-card">
+            <div class="writing-header-row">
+              <div class="step-pill">Writing</div>
+              <div id="writing-timer" class="writing-timer" aria-live="polite">
+                Time left: 3:00
+              </div>
+            </div>
+            <h2 id="writing-screen-title">Writing task</h2>
+            <p id="writing-level-note" class="support-copy"></p>
+
+            <div id="a0-writing-section" class="a0-writing-section" hidden>
+              <div class="a0-writing-header-card">
+                <p class="question-kicker">Look and answer</p>
+                <p id="a0-writing-instructions" class="writing-task-summary"></p>
+              </div>
+              <div id="a0-writing-list" class="a0-writing-list"></div>
+            </div>
+
+            <div id="writing-standard-layout" class="writing-layout">
+              <div class="writing-visual-panel">
+                <div class="writing-picture-card">
+                  <img id="writing-image" class="writing-image" alt="" hidden />
+                  <div id="writing-image-fallback" class="writing-image-fallback" hidden></div>
+                </div>
+
+                <div class="writing-hint-card">
+                  <p id="writing-task-summary" class="writing-task-summary"></p>
+                  <ul id="writing-hint-list" class="writing-hint-list"></ul>
+                </div>
+              </div>
+
+              <div class="writing-box writing-editor-card">
+                <p id="writing-editor-kicker" class="question-kicker">
+                  Write one sentence from the pictures
+                </p>
+                <p id="writing-prompt" class="question-heading question-heading-small"></p>
+                <textarea
+                  id="writing-input"
+                  class="writing-input"
+                  rows="8"
+                  spellcheck="false"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  autocomplete="off"
+                  placeholder="Write here..."
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <button id="writing-check-button" class="primary-button">
+                Check Writing
+              </button>
+              <button id="writing-results-button" class="secondary-button" hidden>
+                Finish test
+              </button>
+            </div>
+
+            <div id="writing-feedback" class="feedback-card" hidden></div>
+          </div>
+        </section>
+
+        <section id="result-screen" class="screen">
+          <div class="result-layout">
+            <div class="result-main">
+              <p class="result-kicker">Your level is</p>
+              <h2 id="result-title" class="result-title"></h2>
+              <p id="result-summary" class="result-summary"></p>
+              <p id="result-detail" class="result-detail"></p>
+              <div id="assessment-summary" class="result-meta-card assessment-summary-card"></div>
+              <div class="result-meta-card">
+                <p id="student-summary" class="result-detail"></p>
+                <p id="sheet-status" class="sheet-status"></p>
+                <div class="button-row result-action-row">
+                  <button id="finish-test-button" class="primary-button" type="button">
+                    Finish test
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="level-track" class="level-track"></div>
+          </div>
+
+          <div class="result-sections">
+            <article class="content-card result-card infographic-card">
+              <h3>How Hunky Dory levels fit together</h3>
+              <div id="result-infographic" class="result-infographic"></div>
+            </article>
+
+            <article class="content-card result-card">
+              <h3>Score chart</h3>
+              <div id="score-chart" class="score-chart"></div>
+            </article>
+
+            <article class="content-card result-card">
+              <h3>Round results</h3>
+              <div id="round-summary" class="round-summary"></div>
+            </article>
+
+            <article class="content-card result-card">
+              <h3>Writing feedback</h3>
+              <div id="writing-summary" class="writing-summary"></div>
+            </article>
+
+            <article class="content-card result-card">
+              <h3>Answer review</h3>
+              <div id="review-list" class="review-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="completed-screen" class="screen">
+          <div class="content-card centered-card completed-card">
+            <div class="step-pill">Completed</div>
+            <h2>Test completed</h2>
+            <p class="lead-text">
+              Thank you. This test has finished and no more answers can be changed.
+            </p>
+            <p class="support-copy">
+              You can now close this page.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
